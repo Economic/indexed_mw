@@ -28,8 +28,6 @@ create_median_wage <- function(ipums_asec_dta_gz) {
   asec_hours_ftpt <- asec_raw %>%
     filter(
       age >= 16,
-      # this is not right: CHANGE
-      #classwkr == 21 | classwkr == 24,
       classwkr %in% c(21, 24, 25, 27, 28),
       ahrsworkt > 0 & ahrsworkt < 999,
       asecwt > 0

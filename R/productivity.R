@@ -34,18 +34,18 @@ create_bls_hours <- function(hours_raw_data, final_value) {
 }
 
 create_productivity_data <- function(hours_data, bea_key, final_value) {
-  bea_nnp <- bea_grab("T10705", bea_key) %>% 
-    filter(LineNumber == 14) %>% 
-    transmute(year = as.numeric(TimePeriod), nnp = DataValue)
+  bea_ndp <- bea_grab("T10705", bea_key) %>% 
+    filter(LineNumber == 30) %>% 
+    transmute(year = as.numeric(TimePeriod), ndp = DataValue)
   
-  year_max <- bea_nnp %>% 
+  year_max <- bea_ndp %>% 
     filter(year == max(year)) %>% 
     pull(year)
   
-  bea_nnp %>%
-    add_row(year = year_max + 1, nnp = final_value) %>% 
+  bea_ndp %>%
+    add_row(year = year_max + 1, ndp = final_value) %>% 
     inner_join(hours_data, by = "year") %>% 
-    mutate(prod = nnp / hours)
+    mutate(prod = ndp / hours)
 }
 
 
