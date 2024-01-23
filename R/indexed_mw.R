@@ -1,5 +1,5 @@
 
-create_fed_mw_data <- function(fed_mw_data) {
+create_fed_mw_data <- function(fed_mw_data, data_version) {
   fed_mw_data %>% 
     rename(value = minimum_wage) %>% 
     mutate(series_type = "actual")
