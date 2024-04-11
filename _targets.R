@@ -2,7 +2,7 @@
 source("packages.R")
 
 ## Globals
-data_version <- "January 23, 2023"
+data_version <- "April 11, 2023"
 bea_key <- Sys.getenv("BEA_API_KEY")
 
 # actual final data year
